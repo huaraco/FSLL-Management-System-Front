@@ -20,8 +20,8 @@
         <ion-item nav-clear menu-close ng-click="login()">
           Login
         </ion-item>
-        <ion-item nav-clear menu-close ng-repeat="member in members | filter:search" href="#/app/{{member.name}}">
-          {{member.name}}
+        <ion-item nav-clear menu-close ng-repeat="member in members | filter:search" href="#/app/{{member.MemberID}}">
+          {{member.MemberName}}
         </ion-item>
       </ion-list>
     </ion-content>
