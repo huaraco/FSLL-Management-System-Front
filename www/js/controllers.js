@@ -193,8 +193,47 @@ app.controller('AppCtrl', function($scope,$rootScope, $ionicModal, $timeout, dat
 });
 
 
-app.controller('Pray', function($scope, $rootScope, $ionicActionSheet, $timeout) {  
+app.controller('Pray', function($scope, $rootScope, $ionicActionSheet, $timeout, dataFactory) {  
 
+     (function (memberId) {
+        dataFactory.getRequirements(memberId)
+        .success(function (requirements) {
+            dataFactory.getDefaultRequirements()
+                .success(function (data) {
+                    _.each(data, function(d){ 
+                        var res = _.find(requirements, function(r){
+                            return r.Title == d.Title;
+                        });
+                        requirements = _.filter(requirements, function(r){ return r != res });
+
+                        if(typeof(res) != 'undefined'){
+                            d.ID = res.ID;
+                            d.isChecked = true;
+                        }else{
+                            d.ID = 0;    
+                        }
+                    });
+                    
+                    if(requirements.length > 0){
+                        _.each(requirements, function(r){
+                            r.isChecked = true;
+                            data.push(r)
+                        })
+                    }
+                    $scope.requirements  = _.groupBy(data,'RequirementTypeName');
+                })
+                .error(function (error) {
+                    $scope.status = 'Unable to load customer data: ' + error.message;
+                });
+        })
+        .error(function (error) {
+            $scope.status = 'Error retrieving requirements! ' + error.message;
+        });
+    })(2);
+
+    $scope.subRequirementsCount = function(cat){
+        return _.filter($scope.requirements[cat], function(r){return r.isChecked}).length;
+    }
 
     $scope.getRequirements = function (memberId) {
         dataFactory.getRequirements(memberId)
@@ -207,8 +246,8 @@ app.controller('Pray', function($scope, $rootScope, $ionicActionSheet, $timeout)
         });
     };
 
-    $scope.getFeedbacks = function (memberId) {
-        dataFactory.getFeedbackss(id)
+    (function (memberId) {
+        dataFactory.getFeedbacks(memberId)
         .success(function (feedbacks) {
             $scope.status = 'Retrieved feedbacks!';
             $scope.feedbacks = feedbacks;
@@ -216,7 +255,7 @@ app.controller('Pray', function($scope, $rootScope, $ionicActionSheet, $timeout)
         .error(function (error) {
             $scope.status = 'Error retrieving feedbacks! ' + error.message;
         });
-    };
+    })(2);
 
     $scope.updateAll = function (all) {
         dataFactory.updateCustomer(cust)
