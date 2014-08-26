@@ -9,10 +9,13 @@
 
   <ion-side-menu side="left">
     <header class="bar bar-header bar-stable">
-      <h1 class="title">你好，XX弟兄</h1>
+      <h1 class="title">你好，{{ user.name }}{{ user.gender }}</h1>
     </header>
     <ion-content class="has-header">
       <ion-list>
+        <ion-item nav-clear menu-close href="#/app/{{user.ID}}">
+          我的祷告事项
+        </ion-item>
         <label class="item item-input">
           <i class="icon ion-search placeholder-icon"></i>
           <input type="text" ng-model="search" placeholder="Search">
@@ -20,8 +23,8 @@
         <ion-item nav-clear menu-close ng-click="login()">
           Login
         </ion-item>
-        <ion-item nav-clear menu-close ng-repeat="member in members | filter:search" href="#/app/{{member.MemberID}}">
-          {{member.MemberName}}
+        <ion-item nav-clear menu-close ng-repeat="member in members | filter:search" href="#/app/{{member.id}}">
+          {{member.group}} - {{member.name}}
         </ion-item>
       </ion-list>
     </ion-content>

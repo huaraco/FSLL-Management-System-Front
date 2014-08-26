@@ -1,6 +1,6 @@
 <style type="text/css">
 .pray-divider {
-    padding: 0px;
+    padding: 5px;
 }
 </style>
 
@@ -20,130 +20,70 @@
                     <div class="col">圣灵的果子</div>
                 </div>
             </div>
-
             <ul class="list" ng-show="showSubs">
-                <li class="item item-checkbox">
-                    <label class="checkbox">
-                        <input type="checkbox" ng-click="showDetails = ! showDetails">
-                    </label>
-                    仁爱
-                </li>
+                <div  ng-repeat="requirement in spritualGift">
+                    <li class="item item-checkbox">
+                        <label class="checkbox">
+                            <input type="checkbox" ng-click="showDetails = ! showDetails">
+                        </label>
+                        {{ requirement.Title }}
+                    </li>
 
-                <div class="item item-input-inset" ng-show="showDetails">
-                    <label class="item-input-wrapper">
-                        <input type="text" placeholder="补充">
-                    </label>
+                    <div class="item item-input-inset" ng-show="showDetails">
+                        <label class="item-input-wrapper">
+                            <input type="text" placeholder="补充">
+                        </label>
+                    </div>
                 </div>
-
-                <li class="item item-checkbox">
-                    <label class="checkbox">
-                        <input type="checkbox">
-                    </label>
-                    喜乐
-                </li>
-
-                <li class="item item-checkbox">
-                    <label class="checkbox">
-                        <input type="checkbox">
-                    </label>
-                    和平
-                </li>
-
-                <li class="item item-checkbox">
-                    <label class="checkbox">
-                        <input type="checkbox">
-                    </label>
-                    忍耐
-                </li>
-
-                <li class="item item-checkbox">
-                    <label class="checkbox">
-                        <input type="checkbox">
-                    </label>
-                    恩慈
-                </li>
-
-                <li class="item item-checkbox">
-                    <label class="checkbox">
-                        <input type="checkbox">
-                    </label>
-                    良善
-                </li>
-
-                <li class="item item-checkbox">
-                    <label class="checkbox">
-                        <input type="checkbox">
-                    </label>
-                    温柔
-                </li>
-
-                <li class="item item-checkbox">
-                    <label class="checkbox">
-                        <input type="checkbox">
-                    </label>
-                    信实
-                </li>
-
-                <li class="item item-checkbox">
-                    <label class="checkbox">
-                        <input type="checkbox">
-                    </label>
-                    节制
-                </li>
-
-
-                
-
             </ul>
 
-
             <div class="item item-divider">
                 <div class="row pray-divider">
-                    <div class="col col-10"><i class="icon ion-settings"></i>
+                    <div class="col col-10"><i class="icon ion-heart"></i>
                     </div>
-                    <div class="col">教会建设的恩赐</div>
+                    <div class="col">建造教会恩赐</div>
                 </div>
             </div>
+            <ul class="list" ng-show="showSubs">
+                <div  ng-repeat="requirement in giftChurchBuilding">
+                    <li class="item item-checkbox">
+                        <label class="checkbox">
+                            <input type="checkbox" ng-click="showDetails = ! showDetails">
+                        </label>
+                        {{ requirement.Title }}
+                    </li>
 
-            <div class="item item-divider">
-                <div class="row pray-divider">
-                    <div class="col col-10"><i class="icon ion-cube"></i>
+                    <div class="item item-input-inset" ng-show="showDetails">
+                        <label class="item-input-wrapper">
+                            <input type="text" placeholder="补充">
+                        </label>
                     </div>
-                    <div class="col">属灵恩赐</div>
                 </div>
-            </div>
+            </ul>
 
             <div class="item item-divider">
                 <div class="row pray-divider">
-                    <div class="col col-10"><i class="icon ion-leaf"></i>
-                    </div>
-                    <div class="col">属灵生命</div>
-                </div>
-            </div>
-
-            <div class="item item-divider">
-                <div class="row pray-divider">
-                    <div class="col col-10"><i class="icon ion-fireball"></i>
+                    <div class="col col-10"><i class="icon ion-heart"></i>
                     </div>
                     <div class="col">属灵征战</div>
                 </div>
             </div>
+            <ul class="list" ng-show="showSubs">
+                <div  ng-repeat="requirement in spritualWar">
+                    <li class="item item-checkbox">
+                        <label class="checkbox">
+                            <input type="checkbox" ng-click="showDetails = ! showDetails">
+                        </label>
+                        {{ requirement.Title }}
+                    </li>
 
-            <div class="item item-divider">
-                <div class="row pray-divider">
-                    <div class="col col-10"><i class="icon ion-lightbulb"></i>
+                    <div class="item item-input-inset" ng-show="showDetails">
+                        <label class="item-input-wrapper">
+                            <input type="text" placeholder="补充">
+                        </label>
                     </div>
-                    <div class="col">心思意念</div>
                 </div>
-            </div>
-
-            <div class="item item-divider">
-                <div class="row pray-divider">
-                    <div class="col col-10"><i class="icon ion-person"></i>
-                    </div>
-                    <div class="col">个人需求</div>
-                </div>
-            </div>
+            </ul>
 
             <div class="row" ng-show="showSubs">
                 <div class="col">

@@ -12,7 +12,7 @@ app.factory('dataFactory', ['$http', function($http) {
     };
 
     dataFactory.getDefaultRequirements = function () {
-        return $http.get(urlBase );
+        return $http.get("http://fsll.dyndns.org/fsll_ms_feedback/api/Requirement/ListDefaultRequirements");
     };
 
     dataFactory.getRequirements = function (memberId) {
